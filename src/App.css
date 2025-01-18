@@ -1,0 +1,56 @@
+.container {
+  text-align: center;
+  margin: 20px;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+.controls button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.visualizer.stack {
+  flex-direction: column-reverse;
+  height: 300px;
+  justify-content: flex-start;
+}
+
+.visualizer.queue {
+  flex-direction: row;
+  width: 300px;
+  justify-content: flex-start;
+}
+
+.element {
+  padding: 5px;
+  border: 2px solid black;
+  margin: 0px;
+  text-align: center;
+  background-color: lightblue;
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualizer.stack .element {
+  border-top: none;
+}
+
+.visualizer.queue .element {
+  border-left: none;
+  border-right: none;
+}
