@@ -54,6 +54,10 @@ const App = () => {
     <div className="container">
       <header>
         <h1>Stack and Queue Visualizer</h1>
+        <p>Frontend by: Hassan Abbas Naqvi</p>
+        <p>Stack Module by: Noor and Nayl</p>
+        <p>Queue Module by: Nameer and Nimra</p>
+        
       </header>
 
       <main>
@@ -82,14 +86,24 @@ const App = () => {
 
         {/* Visualizer */}
         <div className={`visualizer ${mode}`}>
-          <div className="wrap">
+        {
+  mode === "stack" ? (
+    <div className="wrap">
+      {elements.map((el, index) => (
+        <div key={index} className="element">
+          {el}
+        </div>
+      ))}
+    </div>
+  ) : (
+    elements.map((el, index) => (
+      <div key={index} className="element">
+        {el}
+      </div>
+    ))
+  )
+}
 
-            {elements.map((el, index) => (
-            <div key={index} className="element">
-              {el}
-            </div>
-          ))}
-          </div>
           
         </div>
       </main>
