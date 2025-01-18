@@ -52,44 +52,47 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Stack and Queue Visualizer</h1>
-      {/* <div>{"[" + elements.join(', ') + "]"}</div> */}
-      <div className="controls">
-        {/* Add Random Element Button */}
-        <button
-          onClick={addElement}
-          disabled={elements.length >= 10 || loading}
-          style={{
-            backgroundColor: elements.length >= 10 ? 'red' : '',
-            cursor: elements.length >= 10 ? 'not-allowed' : 'pointer',
-            color: elements.length >= 10 ? 'white' : 'black',
-          }}
-        >
-          {elements.length >= 10
-            ? 'Element Limit Exceeded'
-            : loading
-            ? 'Processing...'
-            : 'Add Random Element'}
-        </button>
+      <header>
+        <h1>Stack and Queue Visualizer</h1>
+      </header>
 
-        {/* Remove Button */}
-        <button onClick={removeElement} disabled={loading}>
-          {loading ? 'Processing...' : 'Remove'}
-        </button>
+      <main>
+        {/* Controls */}
+        <div className="controls">
+          <button
+            onClick={addElement}
+            disabled={elements.length >= 10 || loading}
+            className={elements.length >= 10 ? 'disabled-button' : 'active-button'}
+          >
+            {elements.length >= 10
+              ? 'Element Limit Exceeded'
+              : loading
+              ? 'Processing...'
+              : 'Add Random Element'}
+          </button>
 
-        {/* Toggle Mode Button */}
-        <button onClick={toggleMode} disabled={loading}>
-          Toggle Mode ({mode})
-        </button>
-      </div>
+          <button onClick={removeElement} disabled={loading} className="active-button">
+            {loading ? 'Processing...' : 'Remove'}
+          </button>
 
-      <div className={`visualizer ${mode}`}>
-        {elements.map((el, index) => (
-          <div key={index} className="element">
-            {el}
+          <button onClick={toggleMode} disabled={loading} className="active-button">
+            Toggle Mode ({mode})
+          </button>
+        </div>
+
+        {/* Visualizer */}
+        <div className={`visualizer ${mode}`}>
+          <div className="wrap">
+
+            {elements.map((el, index) => (
+            <div key={index} className="element">
+              {el}
+            </div>
+          ))}
           </div>
-        ))}
-      </div>
+          
+        </div>
+      </main>
     </div>
   );
 };

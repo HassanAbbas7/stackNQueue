@@ -55,6 +55,11 @@
   border-right: none;
 }
 
+.wrap{
+  margin-right: auto;
+  margin-left: auto;
+}
+
 
 button {
   padding: 10px 20px;
@@ -67,4 +72,10 @@ button {
 
 button:disabled {
   opacity: 0.6;
+}
+
+#root{
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
 }
