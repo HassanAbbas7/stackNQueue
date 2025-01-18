@@ -36,8 +36,10 @@ const App = () => {
   };
 
   const addElement = async () => {
-    const randomElement = Math.floor(Math.random() * 100); // Generate random number
-    await callApi('add', elements, mode, randomElement);
+    if (elements.length < 10) {
+      const randomElement = Math.floor(Math.random() * 100); // Generate random number
+      await callApi('add', elements, mode, randomElement);
+    }
   };
 
   const removeElement = async () => {
@@ -51,13 +53,31 @@ const App = () => {
   return (
     <div className="container">
       <h1>Stack and Queue Visualizer</h1>
+      {/* <div>{"[" + elements.join(', ') + "]"}</div> */}
       <div className="controls">
-        <button onClick={addElement} disabled={loading}>
-          {loading ? 'Processing...' : 'Add Random Element'}
+        {/* Add Random Element Button */}
+        <button
+          onClick={addElement}
+          disabled={elements.length >= 10 || loading}
+          style={{
+            backgroundColor: elements.length >= 10 ? 'red' : '',
+            cursor: elements.length >= 10 ? 'not-allowed' : 'pointer',
+            color: elements.length >= 10 ? 'white' : 'black',
+          }}
+        >
+          {elements.length >= 10
+            ? 'Element Limit Exceeded'
+            : loading
+            ? 'Processing...'
+            : 'Add Random Element'}
         </button>
+
+        {/* Remove Button */}
         <button onClick={removeElement} disabled={loading}>
           {loading ? 'Processing...' : 'Remove'}
         </button>
+
+        {/* Toggle Mode Button */}
         <button onClick={toggleMode} disabled={loading}>
           Toggle Mode ({mode})
         </button>
